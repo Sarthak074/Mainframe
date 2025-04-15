@@ -15,7 +15,7 @@
 0000000009Paid vendor invoice                            2025-04-14TXN09
 0000000010Travel reimbursement for employee              2025-04-14TXN10
 /*
-//SYSUT2   DD DSN=Z67427.PS.TRAN,
+//SYSUT2   DD DSN=Z67419.PS.TRAN,
 //            DISP=(NEW,CATLG,DELETE),
 //            SPACE=(TRK,(1,1),RLSE)
 //SYSPRINT DD SYSOUT=*
@@ -34,8 +34,8 @@
   TRACKS(1,1) -
   CISZ(4096) -
   FREESPACE(5 5)) -
-  DATA (NAME(Z67427.ASS7.KSDS.DATA)) -
-  INDEX (NAME(Z67427.ASS7.KSDS.INDEX))
+  DATA (NAME(Z67419.ASS7.KSDS.DATA)) -
+  INDEX (NAME(Z67419.ASS7.KSDS.INDEX))
 /*
 //*---------------------------------------------------------------*
 //* STEP 3: LOAD DATA FROM PS FILE TO KSDS
@@ -47,13 +47,13 @@
     INFILE(INFILE) -
     OUTFILE(OUTFILE)
 /*
-//INFILE   DD DSN=Z67427.PS.TRAN,DISP=SHR
-//OUTFILE  DD DSN=Z67427.ASS7.KSDS,DISP=SHR
+//INFILE   DD DSN=Z67419.PS.TRAN,DISP=SHR
+//OUTFILE  DD DSN=Z67419.ASS7.KSDS,DISP=SHR
 //*---------------------------------------------------------------*
 //* STEP 4: LISTCAT KSDS
 //*---------------------------------------------------------------*
 //STEP4    EXEC PGM=IDCAMS
 //SYSPRINT DD SYSOUT=*
 //SYSIN    DD *
-  LISTC ENT(Z67427.ASS7.KSDS) ALL
+  LISTC ENT(Z67419.ASS7.KSDS) ALL
 /*
